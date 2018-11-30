@@ -1,0 +1,210 @@
+:root {
+	--red: #FF4242;
+	--green: #42FF42;
+	--blue: #4242FF;
+	--white-08: rgba(255, 255, 255, 0.8);
+	--black-08: rgba(0, 0, 0, 0.8);
+
+	--selection: rgba(100, 200, 255, 0.6);
+}
+
+::selection {
+	background-color: var(--selection);
+}
+
+body {
+	color: inherit;
+	font-size: 2rem;
+	font-family: inherit;
+
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	width: 6ch;
+}
+
+/* Box */
+
+.box {
+	display: flex;
+}
+
+.center {
+	margin: auto;
+}
+
+.w-vw100 {
+	width: 100vw;
+}
+
+.h-vh100 {
+	height: 100vh;
+}
+
+/* Box Styling */
+
+.plr-05 {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.pb-02 {
+	padding-bottom: 0.2rem;
+}
+
+.bottom-border {
+	border-bottom: 0.2rem solid;
+	padding-bottom: 0;
+}
+
+.border-none {
+	border: none;
+}
+
+.outline-none {
+	outline: none;
+}
+
+
+/* Flex Defs */
+
+.stack-vertical {
+	flex-direction: column;
+}
+
+
+/* Font Styling */
+
+.text-mono {
+	font-family: Courier, monospace;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+
+/* Dark and Light Mode */
+
+.dark {
+	color: var(--black-08);
+	border-color: var(--black-08);
+}
+
+.light {
+	color: var(--white-08);
+	border-color: var(--white-08);
+}
+
+
+/* Backgrounds */
+
+.bg-none {
+	background: none;
+}
+
+.bg-transparent {
+	background-color: transparent;
+}
+
+.red {
+	background-color: var(--red);
+}
+
+.green {
+	background-color: var(--green);
+}
+
+.blue {
+	background-color: var(--blue);
+}
+
+
+
+
+
+
+/* Trash */
+
+/*body {
+	font-size: 2rem;
+	font-family: inherit;
+	color: inherit;
+
+	overflow: auto;
+}
+
+input {
+	border: none;
+	background: none;
+	outline: none;
+	width: 7.5rem;
+
+	color: inherit;
+	text-transform: uppercase;
+}
+
+.hex-input {
+	width: 10rem;
+}
+
+.box {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.vw100 {
+	width: 100vw;
+}
+
+.vh100 {
+	height: 100vh;
+}
+
+.h-10vh {
+	height: 10vh;
+}
+
+.h-45vh {
+	height: 45vh;
+}
+
+.w-100vw {
+	width: 100vh;
+}
+
+.w-10rem {
+	width: 10rem;
+}
+
+.pl-02 {
+	padding-left: 0.5rem;
+}
+
+.pb-02 {
+	padding-bottom: 0.2rem;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bottom-right {
+	display: block;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}*/

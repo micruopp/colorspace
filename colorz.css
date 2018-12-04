@@ -15,7 +15,7 @@
 body {
 	color: inherit;
 	font-size: 2rem;
-	font-family: inherit;
+	font-family: Helvetica, sans-serif;
 
 	padding: 0;
 	margin: 0;
@@ -32,18 +32,21 @@ input {
 
 .box {
 	display: flex;
+	position: relative;
 }
 
-.center {
+.-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	flex-direction: column;
+}
+
+.-centered {
 	margin: auto;
-}
-
-.w-vw100 {
-	width: 100vw;
-}
-
-.h-vh100 {
-	height: 100vh;
 }
 
 /* Box Styling */
@@ -112,99 +115,14 @@ input {
 	background-color: transparent;
 }
 
-.red {
+.bg-red {
 	background-color: var(--red);
 }
 
-.green {
+.bg-green {
 	background-color: var(--green);
 }
 
-.blue {
+.bg-blue {
 	background-color: var(--blue);
 }
-
-
-
-
-
-
-/* Trash */
-
-/*body {
-	font-size: 2rem;
-	font-family: inherit;
-	color: inherit;
-
-	overflow: auto;
-}
-
-input {
-	border: none;
-	background: none;
-	outline: none;
-	width: 7.5rem;
-
-	color: inherit;
-	text-transform: uppercase;
-}
-
-.hex-input {
-	width: 10rem;
-}
-
-.box {
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.container-fluid {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.vw100 {
-	width: 100vw;
-}
-
-.vh100 {
-	height: 100vh;
-}
-
-.h-10vh {
-	height: 10vh;
-}
-
-.h-45vh {
-	height: 45vh;
-}
-
-.w-100vw {
-	width: 100vh;
-}
-
-.w-10rem {
-	width: 10rem;
-}
-
-.pl-02 {
-	padding-left: 0.5rem;
-}
-
-.pb-02 {
-	padding-bottom: 0.2rem;
-}
-
-.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.bottom-right {
-	display: block;
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
-}*/

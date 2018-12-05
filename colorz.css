@@ -12,10 +12,19 @@
 	background-color: var(--selection);
 }
 
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	display: flex;
+}
+
 body {
 	color: inherit;
 	font-size: 2rem;
-	font-family: Helvetica, sans-serif;
+	font-family: -apple-system, Helvetica, sans-serif;
 
 	padding: 0;
 	margin: 0;
@@ -35,18 +44,32 @@ input {
 	position: relative;
 }
 
-.-container {
-	position: absolute;
+.-static-space {
+	/*position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
+*/
 
+	min-height: 100%;
+	min-width: 100%;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .-centered {
 	margin: auto;
+}
+
+.-top {
+	margin-top: 0;
+	padding-top: 2rem;
+}
+
+.-bottom {
+	margin-bottom: 0;
+	padding-bottom: 2rem;
 }
 
 /* Box Styling */
@@ -104,6 +127,15 @@ input {
 	border-color: var(--white-08);
 }
 
+.-dark {
+	color: var(--black-08);
+	border-color: var(--black-08);
+}
+
+.-light {
+	color: var(--white-08);
+	border-color: var(--white-08);
+}
 
 /* Backgrounds */
 

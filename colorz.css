@@ -30,6 +30,16 @@ body {
 	margin: 0;
 }
 
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 1rem;
+}
+
 input {
 	color: inherit;
 	font-family: inherit;
@@ -42,6 +52,10 @@ input {
 .box {
 	display: flex;
 	position: relative;
+}
+
+.-stack-horizontal {
+	flex-direction: row;
 }
 
 .-static-space {
@@ -157,4 +171,23 @@ input {
 
 .bg-blue {
 	background-color: var(--blue);
+}
+
+
+
+
+/*
+
+ Above is sandbox.css
+
+ Below is colorz.css
+
+ */
+
+ .-navbar {
+ 	font-size: 1rem;
+ }
+
+.-footer {
+	font-size: 0.8rem;
 }

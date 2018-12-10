@@ -45,6 +45,8 @@ input {
 	font-family: inherit;
 	font-size: inherit;
 	width: 6ch;
+
+	padding: 0;
 }
 
 a {

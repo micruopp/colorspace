@@ -5,42 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>colorspace</title>
   <link rel="stylesheet" href="/style/main.css">
-  <!-- <script src="/script/colors.js"></script> -->
+  <script src="/script/colors.js"></script>
   <script src="/script/app.js"></script>
 </head>
 
 <body id="space">
   <div id="colorspace" class="container box">
     <header class="header box">
-      <div class="text box">
-        <span id="root-link">
-          <a href="#"></a>
-        </span>
+      <div id="nav-box" class="text row box">
+        <a>#hex</a>
+        <p>&nbsp; | &nbsp;</p>
+        <a>rgb( )</a>
       </div>
     </header>
     <main id="display" class="box row" data-comp="red">
-      <div id="type-panel" class="panel box" data-comp="type">
-        <span>Type</span>
+      <div id="opening-label-panel" class="label panel box" data-comp="type">
+        <div class="content box">
+          <p class="label">rgb(</p>
+        </div>
       </div>
       <div id="red-panel" class="panel box" data-comp="red">
-        <button id="red-up-arrow" class="up arrow" data-comp="red">&#8613;</button>
-        <input id="red-input" class="input" data-comp="red" type="text" name="red-input" value="255">
-        <button id="red-down-arrow" class="down arrow" data-comp="red">&#8615;</button>
+        <div class="content box">
+          <button id="red-up-arrow" class="up arrow" data-comp="red">&#8613;</button>
+          <input id="red-input" class="input" data-comp="red" type="text" name="red-input" value="255">
+          <button id="red-down-arrow" class="down arrow" data-comp="red">&#8615;</button>
+        </div>
       </div>
       <div id="green-panel" class="panel box" data-comp="green">
-        <button id="green-up-arrow" class="up arrow" data-comp="green">&#8613;</button>
-        <input id="green-input" class="input" data-comp="green" type="text" name="green-input" value="255">
-        <button id="green-down-arrow" class="down arrow" data-comp="green">&#8615;</button>
+        <div class="content box">
+          <button id="green-up-arrow" class="up arrow" data-comp="green">&#8613;</button>
+          <input id="green-input" class="input" data-comp="green" type="text" name="green-input" value="255">
+          <button id="green-down-arrow" class="down arrow" data-comp="green">&#8615;</button>
+        </div>
       </div>
       <div id="blue-panel" class="panel box" data-comp="blue">
-        <button id="blue-up-arrow" class="up arrow" data-comp="blue">&#8613;</button>
-        <input id="blue-input" class="input" data-comp="blue" type="text" name="blue-input" value="255">
-        <button id="blue-down-arrow" class="down arrow" data-comp="blue">&#8615;</button>
+        <div class="content box">
+          <button id="blue-up-arrow" class="up arrow" data-comp="blue">&#8613;</button>
+          <input id="blue-input" class="input" data-comp="blue" type="text" name="blue-input" value="255">
+          <button id="blue-down-arrow" class="down arrow" data-comp="blue">&#8615;</button>
+        </div>
+      </div>
+      <div id="closing-label-panel" class="panel box" data-comp="type">
+        <div class="content box">
+          <p class="label">)</p>
+        </div>
       </div>
     </main>
     <footer class="footer box">
       <div class="text box">
-        <span id="copyright-text">&#169; Mic Ruopp 2020. All rights reserved.</span>
+        <span id="copyright-text"><a href="https://micruopp.com"><b>micruopp.com</b></a> | &#169; 2020. All rights reserved.</span>
       </div>
     </footer>
   </div>

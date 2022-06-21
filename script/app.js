@@ -1,10 +1,323 @@
+'use strict';
+
+/*
+ * TODO: Header, Copyright
+ */
+
 window.onload = main;
+
+
+
+// Constants
+
+let SPACE_ID = "space";
+
+let RED_PANEL_ID = "red-panel";
+let GREEN_PANEL_ID = "green-panel";
+let BLUE_PANEL_ID = "blue-panel";
+
+let RED_INPUT_ID = "red-input";
+let GREEN_INPUT_ID = "green-input";
+let BLUE_INPUT_ID = "blue-input";
+
+let PANEL_CLASS = ".panel.box";
+let INPUT_CLASS = ".input";
+
+let RGB_MIN = 0;
+let RGB_MAX = 255;
+
+
+// Settings
+
+// TODO: Convert these to booleans
+let scrollInversion = 1; // 1 or -1
+let touchInertia = 0; // 0 or 1
+
+function main() {
+	// _main();
+
+	app();
+}
+
+function app() {
+
+	// Initially only in RGB colorspace.
+	// The idea (hence the name) is to be able to convert between
+	// 		colorspaces.
+
+	// Query objects
+
+	let space = document.getElementById(SPACE_ID);
+
+	let panels = document.querySelectorAll(PANEL_CLASS);
+	let inputs = document.querySelectorAll(INPUT_CLASS);
+
+	let redInput = document.getElementById(RED_INPUT_ID);
+	let greenInput = document.getElementById(GREEN_INPUT_ID);
+	let blueInput = document.getElementById(BLUE_INPUT_ID);
+
+	let redPanel = document.getElementById(RED_PANEL_ID);
+	let greenPanel = document.getElementById(GREEN_PANEL_ID);
+	let bluePanel = document.getElementById(BLUE_PANEL_ID);
+
+	// Color properties
+
+	let colorspace = 'rgb';
+
+	
+	let color = generateRandomRGB();			// Background color
+	
+	let lightColor = new Color(0, 0, 0);		// Secondary colors for light 
+	let darkColor = new Color(255, 255, 255);	// and dark themes
+
+	// Set up Event listeners
+
+	window.addEventListener('keydown', handleKeyPress);
+
+	for (let panel of panels) {
+		panel.addEventListener('wheel', handlePanelScroll);
+
+
+		let lastTouch = null;
+
+		/*
+
+		function COLTouch() {
+			this.timestamp
+			this.x
+			this.y
+			this.touch // Meta object
+		}
+
+		*/
+		panel.addEventListener('touchstart', function(e) {
+			let thisTouch = e.touches[0];
+			lastTouch = thisTouch;
+		});
+
+		panel.addEventListener('touchmove', function(e) {
+			e.preventDefault();
+
+			let thisTouch = e.touches[0];
+
+			let lx = lastTouch.clientX;
+			let ly = lastTouch.clientY;
+
+			let tx = thisTouch.clientX;
+			let ty = thisTouch.clientY;
+
+			// Refactor below code
+			let dv = ty - ly;
+			let comp = null;
+
+			// The component should be set on start,
+			// 	otherwise the wrong value can be changed if
+			//	the mouse is moved during the scroll event.
+			switch (this.id) {
+				case 'red-panel':
+					comp = 'red';
+					break;
+				case 'green-panel':
+					comp = 'green';
+					break;
+				case 'blue-panel':
+					comp = 'blue';
+					break;
+				default:
+					console.log("Unknown panel.");
+			}
+
+			setInputValue(comp, dv);
+			updateColor();
+			updateView();
+
+
+			lastTouch = thisTouch;
+		});
+
+		panel.addEventListener('touchend', function(e) {
+			lastTouch = null;
+			// TODO: Add intertia. This should be a togglable setting.
+		});
+	}
+
+	// 
+
+	for (let input of inputs) {
+		// input.addEventListener('scroll', )
+		console.log();
+	}
+
+	// Gesture Handlers
+
+	function handleKeyPress(e) {
+		if (e.keyCode == 32) {
+			color = generateRandomRGB();
+			// This needs to update inputs from color
+			// Scrolling updates color from inputs
+			updateInputs();
+			updateView();
+		}
+	}
+
+	function handlePanelScroll(e) {
+		e.preventDefault();
+
+		let delta = e.deltaY;
+		let sensitivity = 0.8;
+
+		let dv = Math.round(delta * sensitivity);
+		let comp = null;
+
+		switch (this.id) {
+			case 'red-panel':
+				comp = 'red';
+				break;
+			case 'green-panel':
+				comp = 'green';
+				break;
+			case 'blue-panel':
+				comp = 'blue';
+				break;
+			default:
+				console.log("Unknown panel.");
+		}
+
+		setInputValue(comp, dv);
+		updateColor();
+		updateView();
+	}
+
+
+
+
+
+
+	function calculateIntertia(points) {
+
+	}
+
+	function calculateVelocity() {
+		// When saving touches, the timestamp needs to be included as well.
+		// I'll need to make a struct for this.
+	}
+
+
+
+	// function 
+
+	function setInputValue(comp, dv) {
+		let input = null;
+		switch (comp) {
+			case 'red':
+				input = redInput;
+				break;
+			case 'green':
+				input = greenInput;
+				break;
+			case 'blue':
+				input = blueInput;
+				break;
+			default:
+				console.log("Unknown component.");
+		}
+
+		if (input) {
+			let val = parseInt(input.value);
+			let val_prime = val + (scrollInversion * dv);
+
+			if (val_prime < RGB_MIN) {
+				val_prime = RGB_MIN;
+			}
+			if (val_prime > RGB_MAX) {
+				val_prime = RGB_MAX;
+			}
+
+			input.value = val_prime;
+		}
+	}
+
+	function updateBackground() {
+		function setBackgroundColor() {
+			space.style.backgroundColor = color;
+		}
+
+		function setFontColor() {
+			// space.style.color = 
+			let lightBrightnessDifference = calculateBrightnessDifference(lightColor, color);
+			let lightColorDifference = calculateColorDifference(lightColor, color);
+
+			if (lightBrightnessDifference > 125 && lightColorDifference > 250) {
+				// root.style.color = rgbToString(lightFontColor);
+				space.style.color = lightColor.toString();
+			} else {
+				// root.style.color = rgbToString(darkFontColor);
+				space.style.color = darkColor.toString();
+			}
+		}
+
+		function setPanelOpacities() {
+			redPanel.style.opacity = redInput.value / 255;
+			greenPanel.style.opacity = greenInput.value / 255;
+			bluePanel.style.opacity = blueInput.value / 255;
+		}
+
+		setBackgroundColor();
+		// setPanelOpacities();
+		setFontColor();
+	}
+
+	function updateColor() {
+		// Get value of inputs
+		let r = redInput.value;
+		let g = greenInput.value;
+		let b = blueInput.value;
+
+		color = new Color(r, g, b);
+	}
+
+	function updateInputs() {
+		redInput.value = color.red;
+		greenInput.value = color.green;
+		blueInput.value = color.blue;
+	}
+
+	function updateView() {
+		// updateColor();
+		updateBackground();
+	}
+
+	updateInputs();
+	updateView();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /// - Main
 
-function main() {
+function _main() {
 
-	let __root = document.querySelector('html');
+	let __root = document.querySelector('body');
 	let root = document.querySelector('#colorspace');
 
 	let inputs = {
@@ -281,7 +594,7 @@ function main() {
 		panel.addEventListener('touchmove', function(e) {
 			console.log("Move");
 
-			e.preventDefault();
+			// e.preventDefault();
 
 			// if (touches)
 			// e.preventDefault();

@@ -1,0 +1,204 @@
+:root {
+	--red: #FF4242;
+	--green: #42FF42;
+	--blue: #4242FF;
+	--white-08: rgba(255, 255, 255, 0.8);
+	--black-08: rgba(0, 0, 0, 0.8);
+
+	--selection: rgba(100, 200, 255, 0.6);
+}
+
+::selection {
+	background-color: var(--selection);
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	display: flex;
+}
+
+body {
+	color: inherit;
+	font-size: 2rem;
+	font-family: -apple-system, Helvetica, sans-serif;
+
+	padding: 0;
+	margin: 0;
+}
+
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 0.5rem;
+}
+
+input {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	width: 7.5rem;
+
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Box */
+
+.box {
+	display: flex;
+	position: relative;
+}
+
+.-stack-horizontal {
+	flex-direction: row;
+}
+
+.-static-space {
+	/*position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+*/
+
+	min-height: 100%;
+	min-width: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.-centered {
+	margin: auto;
+}
+
+.-top {
+	margin-top: 0;
+}
+
+.-bottom {
+	margin-bottom: 0;
+}
+
+/* Box Styling */
+
+.plr-05 {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.pb-02 {
+	padding-bottom: 0.2rem;
+}
+
+.bottom-border {
+	border-bottom: 0.2rem solid;
+	padding-bottom: 0;
+}
+
+.border-none {
+	border: none;
+}
+
+.outline-none {
+	outline: none;
+}
+
+
+/* Flex Defs */
+
+.stack-vertical {
+	flex-direction: column;
+}
+
+
+/* Font Styling */
+
+.text-mono {
+	font-family: Courier, monospace;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+
+/* Dark and Light Mode */
+
+.dark {
+	color: var(--black-08);
+	border-color: var(--black-08);
+}
+
+.light {
+	color: var(--white-08);
+	border-color: var(--white-08);
+}
+
+.-dark {
+	color: var(--black-08);
+	border-color: var(--black-08);
+}
+
+.-light {
+	color: var(--white-08);
+	border-color: var(--white-08);
+}
+
+/* Backgrounds */
+
+.bg-none {
+	background: none;
+}
+
+.bg-transparent {
+	background-color: transparent;
+}
+
+.bg-red {
+	background-color: var(--red);
+}
+
+.bg-green {
+	background-color: var(--green);
+}
+
+.bg-blue {
+	background-color: var(--blue);
+}
+
+
+
+
+/*
+
+ Above is sandbox.css
+
+ Below is colorz.css
+
+ */
+
+ .-navbar {
+ 	font-size: 1.1rem;
+ 	padding-top: 1rem;
+ }
+
+.-footer {
+	font-size: 0.8rem;
+	padding-bottom: 1rem;
+}
